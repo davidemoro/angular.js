@@ -1461,6 +1461,9 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
                 break;
 
               case '&':
+                if (optional && !attrs[attrName]) {
+                  return;
+                }
                 parentGet = $parse(attrs[attrName]);
                 isolateScope[scopeName] = function(locals) {
                   return parentGet(scope, locals);
